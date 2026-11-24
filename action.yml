@@ -1,0 +1,34 @@
+name: Team Birthday Reminder for Slack
+description: Posts today's team birthdays and work anniversaries from a CSV in your repository to Slack or Discord.
+author: DPWonder
+branding:
+  icon: gift
+  color: purple
+inputs:
+  csv:
+    description: Path to the CSV (columns Name, Birthday, Start date).
+    required: false
+    default: team.csv
+  webhook-url:
+    description: Slack or Discord incoming webhook URL. Keep it in a repository secret.
+    required: false
+    default: ''
+  timezone:
+    description: IANA time zone that decides what "today" is, for example America/New_York.
+    required: false
+    default: UTC
+  days-ahead:
+    description: 0 posts on the day, 1 posts the day before.
+    required: false
+    default: '0'
+  format:
+    description: slack or discord.
+    required: false
+    default: slack
+  dry-run:
+    description: true prints the message and posts nothing.
+    required: false
+    default: 'false'
+runs:
+  using: node20
+  main: index.js
